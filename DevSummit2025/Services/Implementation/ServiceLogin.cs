@@ -18,7 +18,7 @@ namespace DevSummit2025.Services.Implementation
             var request = new HttpRequestMessage(HttpMethod.Post, urlLogin);
             request.Headers.Add("Api-Version", "2.0");
             request.Headers.Add("Ocp-Apim-Subscription-Key", apiSubscriptionKey);
-            var content = new StringContent("{\"mail\":\"paulo.rocha@wolterskluwer.com\",\"password\":\"Lseis@1992\"}", null, "application/json");
+            var content = new StringContent("{\"mail\":\"paulo.rocha@wolterskluwer.com\",\"password\":\"xxxxx\"}", null, "application/json");
             request.Content = content;
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
