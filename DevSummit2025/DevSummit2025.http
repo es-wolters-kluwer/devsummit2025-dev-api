@@ -1,0 +1,6 @@
+@DevSummit2025_HostAddress = http://localhost:5229
+
+GET {{DevSummit2025_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
