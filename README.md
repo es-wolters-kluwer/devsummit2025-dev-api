@@ -83,6 +83,7 @@ public async Task ObtenerTokenAsync()
     Console.WriteLine(response.IsSuccessStatusCode ? $"Token obtenido: {responseBody}" : $"Error: {response.StatusCode}");
 }
 ```
+### Ejemplo en C# para subscribir a un webhook
 
 ### Ejemplo en C# para Creación de Producto
 ```csharp
