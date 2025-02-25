@@ -4,7 +4,7 @@ namespace DevSummit2025.Services.Contract
 {
     public interface IServiceCustomer
     {
-        Task<List<CustomerRsDto>> GetAll();
+        Task<List<CustomerDto>> GetAll();
         Task<string> GetNew();
         Task Create();
     }

@@ -12,7 +12,7 @@ namespace DevSummit2025.Services.Implementation
         private readonly string urlBase = configuration.GetValue<string>("Configuration:apimA3Factura");
         private readonly string apiSubscriptionKey = configuration.GetValue<string>("Configuration:apiSubscriptionKey");
         
-        public async Task<List<CustomerRsDto>> GetAll()
+        public async Task<List<CustomerDto>> GetAll()
         {
             string bearer = await serviceLogin.GetToken();
             string url = $"{urlBase}/customers?pageNumber=1&pageSize=50&orderBy=&filter=(not%20isBlocked)%20and%20(not%20isObsolete)and%20(enabled%20eq%20true)";
@@ -25,7 +25,7 @@ namespace DevSummit2025.Services.Implementation
             HttpResponseMessage response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             var json= await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<List<CustomerRsDto>>(json);
+            return JsonSerializer.Deserialize<List<CustomerDto>>(json);
         }
 
         public async Task<string> GetNew()
@@ -47,7 +47,7 @@ namespace DevSummit2025.Services.Implementation
         {
             
             var customerJson = await GetNew();
-            var customer = JsonSerializer.Deserialize<CustomerRsDto>(customerJson);
+            var customer = JsonSerializer.Deserialize<CustomerDto>(customerJson);
             customer.name = "Juan teste";
             customer.businessName = "Juan SA";
             customer.vatNumber = "X0922441A";

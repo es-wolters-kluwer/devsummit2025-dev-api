@@ -47,7 +47,7 @@ namespace DevSummit2025.Services.Implementation
         public async Task Create()
         {
             var productJson = await GetNew();
-            var product = JsonSerializer.Deserialize<ProductRsDto>(productJson);
+            var product = JsonSerializer.Deserialize<ProductDto>(productJson);
             product.description = "Arroz";
             product.salePrice = 12;
 

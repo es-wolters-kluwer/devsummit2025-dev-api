@@ -4,7 +4,7 @@
 namespace DevSummit2025.Model
 {
 
-    public class CustomerRsDto
+    public class CustomerDto
     {
         public string id { get; set; }
         public DateTime creationDate { get; set; }
