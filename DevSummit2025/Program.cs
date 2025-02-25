@@ -1,4 +1,7 @@
 
+using DevSummit2025.Services.Contract;
+using DevSummit2025.Services.Implementation;
+
 namespace DevSummit2025
 {
     public class Program
@@ -14,6 +17,13 @@ namespace DevSummit2025
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+
+
+            builder.Services.AddScoped<IServiceLogin, ServiceLogin>();
+            builder.Services.AddScoped<IServiceWebHook, ServiceWebHook>();
+            builder.Services.AddScoped<IServiceCustomer, ServiceCustomer>();
+            builder.Services.AddScoped<IServiceProduct, ServiceProduct>();
+            builder.Services.AddScoped<IServiceSaleInvoice, ServiceSaleInvoice>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
