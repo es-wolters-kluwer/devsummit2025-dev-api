@@ -10,7 +10,11 @@ namespace DevSummit2025.Controllers
     [Route("[controller]")]
     public class WebHookController(IServiceWebHook service) : ControllerBase
     {
-
+        [HttpPost()]
+        public async Task<IActionResult> PostAsync()
+        {
+            return Ok(await service.Subscribe());
+        }
 
         [HttpGet()]
         public async Task<IActionResult> GetAsync([FromQuery]string idcda)
@@ -24,10 +28,6 @@ namespace DevSummit2025.Controllers
             return Ok(await service.GetAllActive());
         }
 
-        [HttpPost()]
-        public async Task<IActionResult> PostAsync()
-        {
-            return Ok(await service.Subscribe());            
-        }
+        
     }
 }

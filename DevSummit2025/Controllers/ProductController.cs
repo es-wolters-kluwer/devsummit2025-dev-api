@@ -10,22 +10,23 @@ namespace DevSummit2025.Controllers
     [Route("[controller]")]
     public class ProductController(IServiceProduct service) : ControllerBase
     {
-
-        [HttpGet()]
-        public async Task<IActionResult> GetAsync()
-        {
-            return Ok(await service.GetAll());
-        }
-        [HttpGet("new")]
-        public async Task<IActionResult> GetNew()
-        {
-            return Ok(await service.GetNew());
-        }
         [HttpPost()]
         public async Task<IActionResult> PostAsync()
         {
             await service.Create();
             return Ok();
         }
+        [HttpGet("new")]
+        public async Task<IActionResult> GetNew()
+        {
+            return Ok(await service.GetNew());
+        }
+        [HttpGet()]
+        public async Task<IActionResult> GetAsync()
+        {
+            return Ok(await service.GetAll());
+        }
+        
+        
     }
 }

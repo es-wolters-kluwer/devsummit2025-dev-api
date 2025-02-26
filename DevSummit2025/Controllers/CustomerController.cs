@@ -10,6 +10,12 @@ namespace DevSummit2025.Controllers
     [Route("[controller]")]
     public class CustomerController(IServiceCustomer service) : ControllerBase
     {
+        [HttpPost()]
+        public async Task<IActionResult> Post()
+        {
+            await service.Create();
+            return Ok();
+        }
 
         [HttpGet()]
         public async Task<IActionResult> Get()
@@ -23,11 +29,6 @@ namespace DevSummit2025.Controllers
             return Ok(await service.GetNew());
         }
 
-        [HttpPost()]
-        public async Task<IActionResult> Post()
-        {
-            await service.Create();
-            return Ok();
-        }
+        
     }
 }

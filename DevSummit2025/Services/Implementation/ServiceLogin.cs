@@ -18,7 +18,7 @@ namespace DevSummit2025.Services.Implementation
             var request = new HttpRequestMessage(HttpMethod.Post, urlLogin);
             request.Headers.Add("Api-Version", "2.0");
             request.Headers.Add("Ocp-Apim-Subscription-Key", apiSubscriptionKey);
-            var content = new StringContent("{\"mail\":\"paulo.rocha@wolterskluwer.com\",\"password\":\"xxxxx\"}", null, "application/json");
+            var content = new StringContent("{\"mail\":\"xx@xx\",\"password\":\"zz\"}", null, "application/json");
             request.Content = content;
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
@@ -28,7 +28,9 @@ namespace DevSummit2025.Services.Implementation
             
             if (res?.companies?.Count() > 0)
             {
-                var url = $"{urlBase}/companies/{res.companies[1].id}/select";//"https://wkeapipre.azure-api.net/a3factura/api/companies/27331/select"
+                var id = res?.companies?.Where(x=> x.idCDA == "").FirstOrDefault()?.id;
+
+                var url = $"{urlBase}/companies/{id}/select";
                 HttpRequestMessage requestCompany = new HttpRequestMessage(HttpMethod.Post, url);
 
                 requestCompany.Headers.Add("Accept", "application/json");
