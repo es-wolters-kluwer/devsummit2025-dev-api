@@ -34,8 +34,8 @@ namespace DevSummit2025.Services.Implementation
                 entity = "Product", // entidad a la que se suscribe
                 action = "Updated", // accion a la que se suscribe (Created, Updated, Deleted)
                 isPaused = false,
-                applicationName = "AppTest",
-                description = "DevSummit"
+                applicationName = "test",
+                description = "test"
             };
 
 
