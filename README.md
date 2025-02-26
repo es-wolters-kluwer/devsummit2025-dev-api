@@ -194,4 +194,3 @@ public async Task ReceiveWebhookNotificationAsync(string token)
 ## Licencia
 
 Este proyecto se ofrece bajo la [MIT License](LICENSE). Puedes usarlo y modificarlo libremente, siempre que incluyas la nota de licencia correspondiente.
-
