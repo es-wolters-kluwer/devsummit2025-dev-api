@@ -18,8 +18,14 @@ namespace DevSummit2025.Services.Implementation
             var request = new HttpRequestMessage(HttpMethod.Post, urlLogin);
             request.Headers.Add("Api-Version", "2.0");
             request.Headers.Add("Ocp-Apim-Subscription-Key", apiSubscriptionKey);
-            var content = new StringContent("{\"mail\":\"xx@xx\",\"password\":\"zz\"}", null, "application/json");
-            request.Content = content;
+            var body = new
+            {
+                mail = "devsummit2025@gmail.com",
+                password= "DevSummit@1"
+            };
+            request.Content = new StringContent(JsonSerializer.Serialize(body));
+            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
@@ -28,7 +34,7 @@ namespace DevSummit2025.Services.Implementation
             
             if (res?.companies?.Count() > 0)
             {
-                var id = res?.companies?.Where(x=> x.idCDA == "").FirstOrDefault()?.id;
+                var id = res?.companies?.Where(x=> x.idCDA == "DFS01").FirstOrDefault()?.id;
 
                 var url = $"{urlBase}/companies/{id}/select";
                 HttpRequestMessage requestCompany = new HttpRequestMessage(HttpMethod.Post, url);
